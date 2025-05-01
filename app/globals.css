@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+@font-face {
+  font-family: PPMori1;
+  src: url(../public/fonts/PPMori-Regular.woff2);
+}
+
+@font-face {
+  font-family: PPMori2;
+  src: url(../public/fonts/PPMori-SemiBold.woff2);
+}
+
+@font-face {
+  font-family: Suisselntl1;
+  src: url(../public/fonts/SuisseIntl-Book-WebXL.woff2);
+}
+
+@font-face {
+  font-family: Suisselntl2;
+  src: url(../public/fonts/SuisseIntl-Regular-WebXL.woff2);
+}
+
+.page-2-headings {
+  @apply font-[700] text-[#0F0D0D] tracking-tighter md:leading-[39.8408px] leading-[28px] text-[26px] md:text-[39.8408px] font-[PPMori2] uppercase;
+}
+
+.after {
+  @apply relative;
+}
+
+.after::after {
+  content: "Subscribe";
+  @apply absolute top-1/2 -translate-y-1/2 right-0 bg-transparent border-1 rounded-full px-4 py-2 text-black;
+}
+.ft-p {
+  @apply font-['Suisselntl2'] text-[15px] leading-[19px];
+}
+.marque{
+  @apply leading-[7.5vw]  text-[7.5vw] font-[500] tracking-tighter text-black flex overflow-auto whitespace-nowrap
+}
+
+body {
+  background-color: var(--color);
+  transition: background-color 0.5s ease;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.opacity-0 {
+  opacity: 0;
+  pointer-events: none; /* Prevents interaction when not visible */
+}
+
+.opacity-1 {
+  opacity: 1;
+  pointer-events: auto; /* Allows interaction when visible */
+}
+
+.marque div{
+  animation: scroll 35s linear infinite;
+}
+
+@keyframes scroll {
+    to{
+      transform: translateX(-100%);
+    }
+}
+.hero-video {
+  will-change: transform, opacity;
+}
+
+.left-txt, .right-txt, .hero-h4 {
+  will-change: transform, filter;
+}
+
+@media (max-width: 640px) { /* Tailwind's sm breakpoint */
+  .cursor {
+    display: none; /* Hide the cursor on mobile devices */
+  }
+}
+
+.navLi{
+  @apply  text-[36px] font-[PPMori1] text-[#0F0D0D] leading-11
+}
+.navPs{
+  @apply text-[15px] font-[Suisselntl2] leading-[15px]
+}
