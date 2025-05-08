@@ -155,8 +155,8 @@ export default function HeroAnim() {
     // Use matchMedia to apply different animations based on screen size
     const mediaQuery = gsap.matchMedia();
 
-    mediaQuery.add("(min-width: 768px)", desktopAndLaptopAnimation);
-    mediaQuery.add("(max-width: 767px)", mobileAndTabletAnimation);
+    mediaQuery.add("(min-width: 1024px)", desktopAndLaptopAnimation);
+    mediaQuery.add("(max-width: 1023px)", mobileAndTabletAnimation);
   }, []);
 
   return null;

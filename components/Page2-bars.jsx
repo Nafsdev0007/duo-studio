@@ -13,13 +13,14 @@ export default function Page2Bars({ title, desc, border, onHover }) {
         </p>
       </div>
       <button
+        onClick={() => console.log("Expand clicked")} // Replace with actual function
         className="px-4 py-[2px] rounded-full hover:cursor-pointer 
-        transition-all duration-300 ease-in-out 
-        text-[14px] font-[Suisselntl1] 
-        hover:text-[#FEFCFF] 
-        bg-transparent hover:bg-[#000000] 
-        opacity-0 group-hover:opacity-100 
-        border border-[#0F0D0D] hover:border-transparent"
+  transition-all duration-300 ease-in-out 
+  text-[14px] font-[Suisselntl1] 
+  hover:text-[#FEFCFF] 
+  bg-transparent hover:bg-[#000000] 
+  opacity-0 group-hover:opacity-100 
+  border border-[#0F0D0D] hover:border-transparent"
       >
         Expand
       </button>

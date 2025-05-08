@@ -1,7 +1,7 @@
 // components/GSAPAnimation.js
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Page2Bars from "@/components/Page2-bars";
 import Image from "next/image";
 import Background1 from "../../public/services__branding@1152.webp";
@@ -10,6 +10,7 @@ import Background3 from "../../public/services__websites@1152.webp";
 import BgAnimation from "@/components/BgAnim";
 import YAnimation from "@/components/Y-anim";
 import MbBars from "@/components/Mb-Bars";
+import { useMediaQuery } from "react-responsive";
 
 export default function Page2() {
   const [currentBackground, setCurrentBackground] = useState(Background1);
@@ -31,10 +32,22 @@ export default function Page2() {
       }, 300); // matches the transition duration
     }
   };
+  
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 400px)");
+    const handleChange = () => setIsMobile(mediaQuery.matches);
+    handleChange(); // Initialize
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+  
 
   return (
     <>
-      <div className="min-h-[124.5vh] hidden md:block relative w-full page-2">
+      <div className="min-h-[124.5vh] hidden lg:block relative w-full page-2">
         <div className=" flex pl-6 md:pl-[85.5px] gap-52 flex-col">
           <div className="page2-txt-div flex flex-col ">
             <YAnimation
@@ -47,7 +60,7 @@ export default function Page2() {
                 <p className="font-[400] font-[Suisselntl2] leading-[15px] text-[15px] text-[#0F0D0D]">
                   Capabilities
                 </p>
-                <h1 className="page-2-headings mt-20">
+                <h1 className="page-2-headings">
                   At Duo Studio, we have a passion
                 </h1>
               </div>
@@ -132,10 +145,10 @@ export default function Page2() {
         <BgAnimation />
       </div>
 
-      <div className="min-h-[124.5vh] mt-36   block md:hidden">
+      <div className="min-h-[124.5vh] mt-36 sm:mt-48  block lg:hidden">
         <div className="page2-txt-div flex px-6 flex-col ">
           <YAnimation
-            start="top 60%"
+            start={isMobile? "top 60%":"top -5%"}
             trigger={".page-2"}
             end="top top"
             index={16}
@@ -146,20 +159,28 @@ export default function Page2() {
               </p>
             </div>
             <div>
-              <h1 className="page-2-headings">At Duo Studio, we have</h1>
-              <h1 className="page-2-headings">
-                a passion for <br />
-                crafting <br /> personalized
+              <h1 className="page-2-headings flex">At Duo Studio, we have a&nbsp;<span className="sm:block hidden">passion for</span> <span className="sm:hidden hidden md:block">&nbsp;crafting</span> </h1>
+              <h1 className="page-2-headings  sm:hidden block ">
+                 passion for 
+                crafting <br /> personalized solutions,
               </h1>
-              <h1 className="page-2-headings"> solutions, including:</h1>
+
+              <h1 className="page-2-headings hidden md:hidden sm:block">
+              crafting personalized solutions,
+              </h1>
+              <h1 className="page-2-headings md:hidden block">including:</h1>
+
+              <h1 className="page-2-headings md:block hidden">personalized solutions, including:</h1>
             </div>
           </YAnimation>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 md:mt-10">
           <MbBars
-            desc={[
+            desc={isMobile?[
               "Brand Identity, Brand Strategy, Logo Design, Messaging, Positioning, Art Direction, Brand Guidelines",
+            ]:[
+              "Brand Identity, Brand Strategy, Logo Design,", "Messaging, Positioning, Art Direction, Brand"," Guidelines",
             ]}
             title={"Branding"}
             border={"border-t-1"}
@@ -167,7 +188,7 @@ export default function Page2() {
               "https://duo-studio.co/assets/services/services__branding@1152.webp"
             }
             descAnimation={{
-              start: "top -2%",
+              start: isMobile?"top -2%":"top -95%",
               trigger: ".page-2",
               end: "top top",
               index: 17,
@@ -175,18 +196,21 @@ export default function Page2() {
           />
 
           <MbBars
-            desc={[
-              "Web Design, Web Development, UI/UX, Wireframes, Copywriting,",
-              " E-Commerce, SEO, CMS,",
-              "Analytics/Tracking",
-            ]}
+         desc={
+           isMobile ? [
+             "Web Design, Web Development, UI/UX,",
+             "Wireframes, Copywriting, E-Commerce,",
+             "SEO, CMS, Analytics/Tracking"
+           ] : ["Web Design, Web Development, UI/UX,","Wireframes, Copywriting, E-Commerce, SEO,","CMS, Analytics/Tracking"]
+         }
+
             title={"Websites"}
             border={"border-t-1"}
             img={
               "https://duo-studio.co/assets/services/services__websites@1152.webp"
             }
             descAnimation={{
-              start: "top -40%",
+              start: isMobile?"top -40%":"top -185%",
               trigger: ".page-2",
               end: "top top",
               index: 18,
@@ -194,17 +218,17 @@ export default function Page2() {
           />
 
           <MbBars
-            desc={[
-              "Content Strategy, Graphic Design, Marketing Design Collateral, Packaging, Print Design,",
-              "Illustration, Motion Graphics",
-            ]}
+            desc={isMobile?[
+              "Content Strategy, Graphic Design, Marketing Design Collateral, Packaging," ,
+              "Print Design,Illustration, Motion ","Graphics",
+            ]: ["Content Strategy, Graphic Design, Marketing"," Design Collateral, Packaging, Print Design,","Illustration, Motion Graphics"]}
             title={"Content"}
             border={"border-t-1"}
             img={
               "https://duo-studio.co/assets/services/services__content@1152.webp"
             }
             descAnimation={{
-              start: "top -95%",
+              start: isMobile?"top -95%":"top -260%",
               trigger: ".page-2",
               end: "top top",
               index: 19,
@@ -212,9 +236,17 @@ export default function Page2() {
           />
         </div>
 
-        <button className="text-[12px] mb-16 ml-6  hover:bg-[#000000] hover:text-[#fff] cursor-pointer bg-[#EDBFFF] font-[Suisselntl1] px-6 py-[.5px] rounded-full">
+        <YAnimation
+          
+          start={isMobile? "top -100%":"top -305%"}
+          trigger={".page-2"}
+          end="top top"
+          index={20}
+        >
+        <button className="text-[12px] text-black mb-16 ml-6  hover:bg-[#000000] hover:text-[#fff] cursor-pointer bg-[#EDBFFF] font-[Suisselntl1] px-6 py-[.5px] rounded-full">
             Learn More
           </button>
+        </YAnimation>
       </div>
     </>
   );

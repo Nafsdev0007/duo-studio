@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -29,6 +30,9 @@ body {
   display: none;
 }
 
+
+
+
 @font-face {
   font-family: PPMori1;
   src: url(../public/fonts/PPMori-Regular.woff2);
@@ -50,7 +54,7 @@ body {
 }
 
 .page-2-headings {
-  @apply font-[700] text-[#0F0D0D] tracking-tighter md:leading-[39.8408px] leading-[28px] text-[26px] md:text-[39.8408px] font-[PPMori2] uppercase;
+  @apply font-[700] text-[#0F0D0D] tracking-tighter lg:leading-[39.8408px] leading-[28px] text-[26px] lg:text-[39.8408px] font-[PPMori2] uppercase;
 }
 
 .after {
@@ -62,7 +66,7 @@ body {
   @apply absolute top-1/2 -translate-y-1/2 right-0 bg-transparent border-1 rounded-full px-4 py-2 text-black;
 }
 .ft-p {
-  @apply font-['Suisselntl2'] text-[15px] leading-[19px];
+  @apply font-['Suisselntl2'] text-[15px] tracking-tighter text-black leading-[19px]; 
 }
 .marque{
   @apply leading-[7.5vw]  text-[7.5vw] font-[500] tracking-tighter text-black flex overflow-auto whitespace-nowrap
@@ -70,12 +74,18 @@ body {
 
 body {
   background-color: var(--color);
-  transition: background-color 0.5s ease;
+  transition: background-color 0.33s ease;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@media (max-width: 768px) {
+  .client-txt-div {
+    color: #ffffff; /* Default color for mobile */
+  }
+
+  .client-txt-div:hover {
+    color: inherit; /* Disable hover effect */
+  }
+}
 
 .opacity-0 {
   opacity: 0;
@@ -104,15 +114,11 @@ body {
   will-change: transform, filter;
 }
 
-@media (max-width: 640px) { /* Tailwind's sm breakpoint */
-  .cursor {
-    display: none; /* Hide the cursor on mobile devices */
-  }
-}
 
 .navLi{
   @apply  text-[36px] font-[PPMori1] text-[#0F0D0D] leading-11
 }
 .navPs{
-  @apply text-[15px] font-[Suisselntl2] leading-[15px]
+  @apply text-[14px] font-[Suisselntl2] text-[#0F0D0D] leading-[14px]
 }
+

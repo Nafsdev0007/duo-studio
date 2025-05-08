@@ -14,7 +14,7 @@ export default function SlidingAnimation({ children }) {
     // Handle screen resize
     useEffect(() => {
         const checkScreenSize = () => {
-            const isDesktopView = window.innerWidth >= 768;
+            const isDesktopView = window.innerWidth > 1024;
             setIsDesktop(isDesktopView);
         };
 

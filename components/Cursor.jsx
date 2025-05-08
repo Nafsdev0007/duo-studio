@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-const isMobileDevice = () => window.innerWidth <= 768; // Changed to md breakpoint to match your site's mobile breakpoint
+const isMobileDevice = () => window.innerWidth < 1024; // Changed to md breakpoint to match your site's mobile breakpoint
 
 export default function Cursor({ mousePosition = { x: 0, y: 0 } }) {
   const cursorRef = useRef(null);

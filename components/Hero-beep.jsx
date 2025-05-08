@@ -17,10 +17,10 @@ export default function Beep() {
   }, []);
 
   return (
-    <h4 ref={txtRef} className="hero-h4 text-[16px] md:text-clip opacity-0">
-      We build brand identities, creative websites, and visual narratives that
-      showcase the full extent of your potential. Based in Washington DC,
-     <br className="md:hidden block " /> working with clients world-wide.
+    <h4 ref={txtRef} className="hero-h4 text-[16px]  md:text-clip opacity-0">
+      We build brand identities, creative websites, and <br className="lg:hidden block" /> visual narratives that
+      showcase the full extent of <br className="lg:hidden block" />your potential. Based in Washington DC,<br className="lg:hidden block" />
+     &nbsp; working with clients world-wide.
     </h4>
   );
 }
