@@ -66,10 +66,10 @@ export default function BgAnimation() {
         background: "#0F0D0D",
         immediateRender: false,
         scrollTrigger: {
-          trigger: "#hero",
+          trigger: ".works-bottom",
           scrub: true,
-          start: isMobile ? "top -430%" : isSmall ? "top -728%" : isMedium ? "top -732%" : "top -530%",
-          end: isMobile ? "top -430%" : isSmall ? "top -728%" : isMedium ? "top -732%" : "top -530%",
+          start: isMobile ? "top 250vh" : isSmall ? "top -200vh" : isMedium ? "top -250vh" : "top 100vh",
+          end: isMobile ? "top 250vh" : isSmall ? "top -200vh" : isMedium ? "top -250vh" : "top 100vh",
           markers: false,
         },
         onStart: () => {
